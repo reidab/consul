@@ -916,12 +916,7 @@ func TestACLEndpoint_TokenSet(t *testing.T) {
 		require.Equal(t, token.Description, "foobar")
 		require.Equal(t, token.AccessorID, resp.AccessorID)
 
-		require.Len(t, token.Policies, 2)
-		require.Equal(t, policy1.ID, token.Policies[0].ID)
-		require.Equal(t, policy2.ID, token.Policies[1].ID)
-		// names are returned because they are denormalized on write
-		require.Equal(t, policy1.Name, token.Policies[0].Name)
-		require.Equal(t, policy2.Name, token.Policies[1].Name)
+		require.Len(t, token.Policies, 0)
 	})
 
 	for _, test := range []struct {
